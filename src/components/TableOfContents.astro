@@ -1,0 +1,41 @@
+---
+export type TocSubEntry = { id: string; title: string; anchor: string };
+export type TocEntry = {
+  id: string;
+  title: string;
+  anchor: string;
+  subs: TocSubEntry[];
+};
+
+interface Props {
+  entries: TocEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<nav aria-label="Índice">
+  <h2>Índice</h2>
+  <ol class="toc">
+    {
+      entries.map((entry) => (
+        <li>
+          <a href={`#${entry.anchor}`} data-toc-anchor={entry.anchor}>
+            {entry.title}
+          </a>
+          {entry.subs.length > 0 && (
+            <ol class="toc-sub">
+              {entry.subs.map((sub) => (
+                <li>
+                  <a href={`#${sub.anchor}`} data-toc-anchor={sub.anchor}>
+                    {sub.title}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>

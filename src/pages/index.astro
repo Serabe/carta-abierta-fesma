@@ -1,0 +1,139 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import TableOfContents, {
+  type TocEntry,
+} from '../components/TableOfContents.astro';
+import SidebarAsides, {
+  type SidebarAside,
+} from '../components/SidebarAsides.astro';
+import VersionHistory from '../components/VersionHistory.astro';
+
+const entries = await getCollection('sections');
+
+type Grouped = {
+  sectionSlug: string;
+  intro: (typeof entries)[number];
+  subs: (typeof entries)[number][];
+};
+
+const groups = new Map<string, Grouped>();
+for (const entry of entries) {
+  const [sectionSlug, rest] = entry.id.split('/');
+  const isIntro = rest === undefined || rest === 'index';
+  const existing = groups.get(sectionSlug);
+  if (!existing) {
+    if (isIntro) {
+      groups.set(sectionSlug, { sectionSlug, intro: entry, subs: [] });
+    } else {
+      groups.set(sectionSlug, {
+        sectionSlug,
+        intro: entry,
+        subs: [entry],
+      });
+    }
+  } else if (isIntro) {
+    existing.intro = entry;
+  } else {
+    existing.subs.push(entry);
+  }
+}
+
+const orderedGroups = Array.from(groups.values())
+  .sort((a, b) => a.sectionSlug.localeCompare(b.sectionSlug))
+  .map((group) => ({
+    ...group,
+    subs: group.subs.sort((a, b) => a.id.localeCompare(b.id)),
+  }));
+
+const toc: TocEntry[] = orderedGroups.map((group) => ({
+  id: group.sectionSlug,
+  title: group.intro.data.title,
+  anchor: group.sectionSlug,
+  subs: group.subs.map((sub) => {
+    const subSlug = sub.id.split('/').pop() as string;
+    return {
+      id: sub.id,
+      title: sub.data.title,
+      anchor: `${group.sectionSlug}__${subSlug}`,
+    };
+  }),
+}));
+
+const asides: SidebarAside[] = [];
+for (const group of orderedGroups) {
+  const aside = group.intro.data.aside;
+  if (!aside) continue;
+  const html = aside
+    .split(/\n{2,}/)
+    .map((block) => `<p>${block.trim().replace(/\n/g, '<br />')}</p>`)
+    .join('');
+  asides.push({ sectionAnchor: group.sectionSlug, html });
+}
+
+const renderedGroups = await Promise.all(
+  orderedGroups.map(async (group) => {
+    const introRender = await render(group.intro);
+    const subRenders = await Promise.all(
+      group.subs.map(async (sub) => ({
+        entry: sub,
+        anchor: `${group.sectionSlug}__${sub.id.split('/').pop()}`,
+        Content: (await render(sub)).Content,
+      })),
+    );
+    return {
+      group,
+      IntroContent: introRender.Content,
+      subs: subRenders,
+    };
+  }),
+);
+---
+
+<Layout
+  title="Carta abierta a FESMA"
+  description="Carta abierta dirigida a la federación FESMA."
+>
+  <div class="layout">
+    <aside class="sidebar">
+      <TableOfContents entries={toc} />
+      <SidebarAsides asides={asides} />
+    </aside>
+
+    <main class="content">
+      <header class="letter-header">
+        <h1>Carta abierta a FESMA</h1>
+        <p>Un documento vivo dirigido a la federación y a su base social.</p>
+      </header>
+
+      {
+        renderedGroups.map(({ group, IntroContent, subs }) => (
+          <section
+            id={group.sectionSlug}
+            class="section"
+            data-section={group.sectionSlug}
+          >
+            <h2>{group.intro.data.title}</h2>
+            <IntroContent />
+            {subs.map(({ entry, anchor, Content }) => (
+              <section
+                id={anchor}
+                class="subsection"
+                data-section={anchor}
+              >
+                <h3>{entry.data.title}</h3>
+                <Content />
+              </section>
+            ))}
+          </section>
+        ))
+      }
+
+      <VersionHistory />
+    </main>
+  </div>
+
+  <script>
+    import '../scripts/scrollspy.ts';
+  </script>
+</Layout>

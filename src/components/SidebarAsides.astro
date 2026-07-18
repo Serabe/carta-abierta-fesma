@@ -1,0 +1,25 @@
+---
+export type SidebarAside = {
+  sectionAnchor: string;
+  html: string;
+};
+
+interface Props {
+  asides: SidebarAside[];
+}
+
+const { asides } = Astro.props;
+---
+
+<div class="sidebar-aside" id="sidebar-aside">
+  {
+    asides.map((aside, index) => (
+      <div
+        class="sidebar-aside__panel"
+        data-aside-for={aside.sectionAnchor}
+        hidden={index !== 0}
+        set:html={aside.html}
+      />
+    ))
+  }
+</div>

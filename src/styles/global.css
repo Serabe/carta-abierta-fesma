@@ -1,0 +1,241 @@
+:root {
+  --color-bg: #fafaf7;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-muted: #6b6b6b;
+  --color-border: #e4e4e0;
+  --color-accent: #8b1a1a;
+  --color-accent-soft: #f5e6e6;
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --content-max: 42rem;
+  --sidebar-width: 20rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--color-accent);
+  z-index: 100;
+  transition: width 80ms linear;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: 3rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.25rem;
+    gap: 1.5rem;
+  }
+}
+
+.sidebar {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding-right: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: static;
+    max-height: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+  }
+}
+
+.sidebar h2 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin: 0 0 0.75rem;
+}
+
+.toc {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.toc li {
+  margin: 0;
+}
+
+.toc a {
+  display: block;
+  padding: 0.3rem 0.6rem;
+  color: var(--color-text);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: border-color 120ms, color 120ms, background 120ms;
+}
+
+.toc a:hover {
+  color: var(--color-accent);
+}
+
+.toc a.is-active {
+  border-left-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.toc .toc-sub {
+  list-style: none;
+  padding-left: 0.75rem;
+  margin: 0;
+}
+
+.toc .toc-sub a {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.sidebar-aside {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+}
+
+.sidebar-aside p:first-child {
+  margin-top: 0;
+}
+
+.content {
+  max-width: var(--content-max);
+}
+
+.content header.letter-header {
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.content header.letter-header h1 {
+  font-size: 2.25rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.content header.letter-header p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.content section.section {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 5rem;
+}
+
+.content section.subsection {
+  margin-bottom: 2rem;
+  scroll-margin-top: 5rem;
+}
+
+.content h2 {
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+  color: var(--color-accent);
+}
+
+.content p {
+  margin: 0 0 1rem;
+}
+
+.versions {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+.versions h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+}
+
+.versions ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.versions li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+}
+
+.versions .tag-name {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.versions .tag-date {
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.versions .tag-subject {
+  flex: 1 1 100%;
+  color: var(--color-muted);
+}
+
+.versions .tag-empty {
+  color: var(--color-muted);
+  font-style: italic;
+}

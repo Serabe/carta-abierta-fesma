@@ -1,0 +1,32 @@
+---
+import { getGitTags } from '../utils/git-tags';
+
+const tags = getGitTags();
+---
+
+<section class="versions" id="historial-de-versiones">
+  <h2>Historial de versiones</h2>
+  {
+    tags.length === 0 ? (
+      <p class="tag-empty">
+        Todavía no hay versiones publicadas. Crea una tag de git
+        (por ejemplo <code>v1.0.0</code>) para empezar el historial.
+      </p>
+    ) : (
+      <ol>
+        {tags.map((tag) => (
+          <li>
+            <a class="tag-name" href={tag.tagUrl}>
+              {tag.name}
+            </a>
+            <span class="tag-date">{tag.date}</span>
+            {tag.compareUrl && (
+              <a href={tag.compareUrl}>ver cambios respecto a la versión anterior</a>
+            )}
+            {tag.subject && <span class="tag-subject">{tag.subject}</span>}
+          </li>
+        ))}
+      </ol>
+    )
+  }
+</section>
