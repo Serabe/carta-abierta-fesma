@@ -94,8 +94,21 @@ const renderedGroups = await Promise.all(
   title="Carta abierta a FESMA"
   description="Carta abierta dirigida a la federación FESMA."
 >
+  <button
+    type="button"
+    class="sidebar-toggle"
+    id="sidebar-toggle"
+    aria-label="Abrir índice"
+    aria-controls="sidebar"
+    aria-expanded="false"
+  >
+    <span aria-hidden="true">☰</span>
+  </button>
+
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
   <div class="layout">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <TableOfContents entries={toc} />
       <SidebarAsides asides={asides} />
     </aside>
@@ -135,5 +148,39 @@ const renderedGroups = await Promise.all(
 
   <script>
     import '../scripts/scrollspy.ts';
+
+    const toggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+
+    const closeSidebar = () => {
+      sidebar?.classList.remove('is-open');
+      backdrop?.setAttribute('hidden', '');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Abrir índice');
+    };
+
+    const openSidebar = () => {
+      sidebar?.classList.add('is-open');
+      backdrop?.removeAttribute('hidden');
+      toggle?.setAttribute('aria-expanded', 'true');
+      toggle?.setAttribute('aria-label', 'Cerrar índice');
+    };
+
+    toggle?.addEventListener('click', () => {
+      if (sidebar?.classList.contains('is-open')) closeSidebar();
+      else openSidebar();
+    });
+
+    backdrop?.addEventListener('click', closeSidebar);
+
+    sidebar?.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('a')) closeSidebar();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeSidebar();
+    });
   </script>
 </Layout>
