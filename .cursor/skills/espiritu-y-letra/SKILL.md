@@ -95,8 +95,11 @@ Casos típicos tras esa invocación:
 
 ## Relación con otras skills
 
-- Tras `extraer-puntos-carta`, usar esta skill para bajar cada punto a
-  espíritu + letra.
+- Tras `/extraer-puntos-carta`, las unidades de trabajo viven en `tasks/`
+  (archivos `P*.md`), no en `src/content/`. Preferir abrir o citar esa
+  tarea al separar espíritu y letra.
 - Si la letra suena a resentimiento o ataque personal, pasar el texto
-  por `suavizar-tono-resentimiento` **sin cambiar el espíritu**, salvo
+  por `/suavizar-tono-resentimiento` **sin cambiar el espíritu**, salvo
   que el espíritu mismo fuera el problema.
+- No promover la letra a `src/content/sections/` salvo que el usuario lo
+  pida de forma explícita.

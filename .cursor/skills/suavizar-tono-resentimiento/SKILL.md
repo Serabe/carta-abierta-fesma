@@ -20,9 +20,15 @@ declara la introducción de la carta— y no a un enfrentamiento personal.
 
 ## Cuándo usar
 
-- El usuario pega un borrador y nota que “suena a ataque” o a rencor.
-- Quiere criticar decisiones o procesos sin señalar a individuos.
-- Pide revisar el tono antes de volcar el texto en `src/content/sections/`.
+Solo cuando el usuario lo invoca explícitamente con
+`/suavizar-tono-resentimiento` (o lo adjunta con `@`). No aplicar de
+forma automática.
+
+Casos típicos tras esa invocación:
+
+- Pegar un borrador que “suena a ataque” o a rencor.
+- Criticar decisiones o procesos sin señalar a individuos.
+- Revisar el tono antes de volcar el texto en `src/content/sections/`.
 
 ## Principios editoriales
 
