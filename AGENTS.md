@@ -4,6 +4,18 @@ Static [Astro](https://astro.build) site that renders an open letter ("Carta abi
 
 Editorial backlog for points not yet written into the letter lives in `tasks/` (created by `/extraer-puntos-carta`). Those files are work items only — Astro does not load them.
 
+## Editorial Agent Skills
+
+Project skills live under `.cursor/skills/` (each folder has a `SKILL.md`). All three are **user-invoked only** (`disable-model-invocation: true`): they do not auto-apply; invoke them with `/` or `@` in Agent chat.
+
+| Slash command | Skill | Purpose |
+| --- | --- | --- |
+| `/extraer-puntos-carta` | `extraer-puntos-carta` | Extract developable points from raw notes into `tasks/P*.md` |
+| `/espiritu-y-letra` | `espiritu-y-letra` | Split each point into espíritu (intent) vs letra (wording) |
+| `/suavizar-tono-resentimiento` | `suavizar-tono-resentimiento` | Soften resentment / personal-attack tone without diluting the ask |
+
+If the `/` menu does not list them (known gap on Cloud Agent follow-ups), write the skill name in prose, e.g. “usa la skill `extraer-puntos-carta`”. On desktop: open the repo root, pull `main`, then Reload Window; check **Customize → Skills**.
+
 ## Cursor Cloud specific instructions
 
 - Standard commands live in `package.json`: `pnpm dev` (dev server), `pnpm build` (static build), `pnpm preview` (serve the built `dist/`).
