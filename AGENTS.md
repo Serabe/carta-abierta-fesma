@@ -2,6 +2,8 @@
 
 Static [Astro](https://astro.build) site that renders an open letter ("Carta abierta a FESMA") from Markdown content in `src/content/sections/`. There is no backend, database, or auth. It deploys to Netlify as a static build.
 
+Editorial backlog for points not yet written into the letter lives in `tasks/` (created by `/extraer-puntos-carta`). Those files are work items only — Astro does not load them.
+
 ## Cursor Cloud specific instructions
 
 - Standard commands live in `package.json`: `pnpm dev` (dev server), `pnpm build` (static build), `pnpm preview` (serve the built `dist/`).

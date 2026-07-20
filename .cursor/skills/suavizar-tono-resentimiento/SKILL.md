@@ -87,5 +87,6 @@ Antes de dar por buena la revisión, verificar:
 ## Relación con el repo
 
 La carta en `src/content/sections/` debe mantener tono público, ordenado y
-de diálogo. Esta skill no crea archivos salvo que el usuario pida aplicar
+de diálogo. El backlog editorial está en `tasks/` y no es contenido web.
+Esta skill no crea archivos de sección salvo que el usuario pida aplicar
 el texto revisado a una sección concreta.
