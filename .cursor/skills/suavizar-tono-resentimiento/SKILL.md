@@ -6,6 +6,7 @@ description: >-
   usuario pida suavizar tono, quitar rencor, evitar que suene a ataque
   personal, o alinear un borrador con el espíritu de diálogo de la carta
   abierta (soften tone, remove resentment, not a personal attack).
+disable-model-invocation: true
 ---
 
 # Suavizar resentimiento y ataque personal

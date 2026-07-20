@@ -6,6 +6,7 @@ description: >-
   mensajes, actas o material crudo y pida puntos, ideas, ejes, ángulos o
   material para desarrollar más adelante en la carta (extract points,
   outline ideas, develop later).
+disable-model-invocation: true
 ---
 
 # Extraer puntos para la carta abierta
@@ -18,9 +19,14 @@ argumento, contexto o petición.
 
 ## Cuándo usar
 
-- El usuario pega notas, chats, correos, actas o borradores y pide puntos.
-- Quiere material para ampliar `src/content/sections/` más adelante.
-- Pide un inventario de ideas sin redactar todavía la carta.
+Solo cuando el usuario lo invoca explícitamente con `/extraer-puntos-carta`
+(o lo adjunta con `@`). No aplicar de forma automática.
+
+Casos típicos tras esa invocación:
+
+- Pegar notas, chats, correos, actas o borradores y pedir puntos.
+- Querer material para ampliar `src/content/sections/` más adelante.
+- Pedir un inventario de ideas sin redactar todavía la carta.
 
 ## Instrucciones
 
