@@ -6,6 +6,7 @@ description: >-
   escrita — “actual” en inglés). Usar cuando el usuario pida distinguir
   intención vs redacción, spirit vs letter, espíritu y letra, o revisar
   si el texto cumple el objetivo del punto.
+disable-model-invocation: true
 ---
 
 # Espíritu y letra de cada punto
@@ -25,11 +26,15 @@ comprobar si la letra cumple el espíritu.
 
 ## Cuándo usar
 
-- El usuario aporta puntos, borradores o secciones y pide separar
-  intención vs texto.
-- Quiere comprobar si un párrafo “cumple” lo que pretendía decir.
-- Hay que reescribir la letra manteniendo el mismo espíritu (o ajustar
-  el espíritu sin fingir que el texto ya lo expresa).
+Solo cuando el usuario lo invoca explícitamente con `/espiritu-y-letra`
+(o lo adjunta con `@`). No aplicar de forma automática.
+
+Casos típicos tras esa invocación:
+
+- Separar intención vs texto en puntos, borradores o secciones.
+- Comprobar si un párrafo cumple lo que pretendía decir.
+- Reescribir la letra manteniendo el mismo espíritu (o ajustar el
+  espíritu sin fingir que el texto ya lo expresa).
 
 ## Instrucciones
 
