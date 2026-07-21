@@ -24,6 +24,31 @@ function writeState(state: SignState) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
+/** Uids of signable sections currently present in the page. */
+function existingSignableUids(): Set<string> {
+  const ids = new Set<string>();
+  document.querySelectorAll<HTMLElement>('[data-sign-id]').forEach((el) => {
+    const id = el.getAttribute('data-sign-id');
+    if (id) ids.add(id);
+  });
+  return ids;
+}
+
+/**
+ * Drop stored selections whose section no longer exists on this page.
+ * Keeps every uid that still matches a signable section.
+ */
+function pruneMissingSelections(state: SignState): SignState {
+  const existing = existingSignableUids();
+  const selected = state.selected.filter((id) => existing.has(id));
+  if (selected.length !== state.selected.length) {
+    const next = { selected };
+    writeState(next);
+    return next;
+  }
+  return state;
+}
+
 function titleFor(id: string): string {
   const el = document.querySelector(`[data-sign-id="${CSS.escape(id)}"]`);
   return el?.getAttribute('data-sign-title') ?? id;
@@ -159,7 +184,7 @@ function init() {
     syncUi(readState());
   });
 
-  syncUi(readState());
+  syncUi(pruneMissingSelections(readState()));
 }
 
 if (document.readyState === 'loading') {
