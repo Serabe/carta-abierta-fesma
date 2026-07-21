@@ -13,6 +13,16 @@ import SignFinalize from '../components/SignFinalize.astro';
 
 const entries = await getCollection('sections');
 
+const uids = entries
+  .map((entry) => entry.data.uid)
+  .filter((uid): uid is string => typeof uid === 'string');
+const duplicateUid = uids.find((uid, index) => uids.indexOf(uid) !== index);
+if (duplicateUid) {
+  throw new Error(
+    `Duplicate section uid "${duplicateUid}". Each uid must be unique and stable across reorderings.`,
+  );
+}
+
 type Grouped = {
   sectionSlug: string;
   intro: (typeof entries)[number];
@@ -130,9 +140,9 @@ const renderedGroups = await Promise.all(
           >
             <h2>{group.intro.data.title}</h2>
             <IntroContent />
-            {group.intro.data.signable && (
+            {group.intro.data.signable && group.intro.data.uid && (
               <SignToggle
-                id={group.sectionSlug}
+                id={group.intro.data.uid}
                 title={group.intro.data.title}
               />
             )}
@@ -144,8 +154,8 @@ const renderedGroups = await Promise.all(
               >
                 <h3>{entry.data.title}</h3>
                 <Content />
-                {entry.data.signable && (
-                  <SignToggle id={anchor} title={entry.data.title} />
+                {entry.data.signable && entry.data.uid && (
+                  <SignToggle id={entry.data.uid} title={entry.data.title} />
                 )}
               </section>
             ))}

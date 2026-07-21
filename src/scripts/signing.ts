@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'carta-abierta:pending-signatures';
-/** Prefix for the copyable section-id payload. Parsed by scripts/add-signature.mjs */
+/** Prefix for the copyable section-uid payload. Parsed by scripts/add-signature.mjs */
 const CODE_PREFIX = 'CAB1';
 
 type SignState = {
@@ -29,7 +29,7 @@ function titleFor(id: string): string {
   return el?.getAttribute('data-sign-title') ?? id;
 }
 
-/** Compact, script-parseable list of section ids. Example: CAB1:id-a,id-b */
+/** Compact, script-parseable list of stable section uids. Example: CAB1:transparencia,participacion */
 function buildSectionCode(selected: string[]): string {
   const ids = [...new Set(selected)].sort().join(',');
   return `${CODE_PREFIX}:${ids}`;

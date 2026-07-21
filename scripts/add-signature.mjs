@@ -3,20 +3,23 @@
  * Add a signer from a CAB1 section code (copied from the letter UI).
  *
  * Usage:
- *   node scripts/add-signature.mjs --name "Ana Pérez" --code "CAB1:id-a,id-b"
- *   node scripts/add-signature.mjs --name "Ana Pérez" --affiliation "Madrid" --code "CAB1:id-a"
+ *   node scripts/add-signature.mjs --name "Ana Pérez" --code "CAB1:transparencia,participacion"
+ *   node scripts/add-signature.mjs --name "Ana Pérez" --affiliation "Madrid" --code "CAB1:transparencia"
  *   node scripts/add-signature.mjs --remove --name "Ana Pérez"
  *
- * Code format: CAB1:<section-id>,<section-id>,...
- * Section ids match content anchors (e.g. 03-peticiones__01-transparencia).
+ * Code format: CAB1:<uid>,<uid>,...
+ * Uids come from each section's frontmatter `uid` field (stable; not the
+ * folder/file order prefixes like 03-peticiones/01-…).
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_PATH = join(ROOT, 'src/data/signatures.json');
+const SECTIONS_DIR = join(ROOT, 'src/content/sections');
 const CODE_PREFIX = 'CAB1';
+const UID_RE = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 
 /**
  * @typedef {{ name: string, affiliation?: string, sections: string[], addedAt: string }} Signer
@@ -24,7 +27,7 @@ const CODE_PREFIX = 'CAB1';
 
 function usage() {
   console.error(`Usage:
-  node scripts/add-signature.mjs --name "Nombre" --code "CAB1:section-id,..."
+  node scripts/add-signature.mjs --name "Nombre" --code "CAB1:uid,uid,..."
   node scripts/add-signature.mjs --name "Nombre" --affiliation "Delegación" --code "CAB1:..."
   node scripts/add-signature.mjs --remove --name "Nombre"`);
   process.exit(1);
@@ -52,20 +55,64 @@ function parseArgs(argv) {
 }
 
 /**
+ * Walk section markdown files and collect frontmatter `uid` values.
+ * @returns {Set<string>}
+ */
+function loadKnownUids() {
+  /** @type {string[]} */
+  const files = [];
+
+  /**
+   * @param {string} dir
+   */
+  function walk(dir) {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const full = join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.isFile() && entry.name.endsWith('.md')) files.push(full);
+    }
+  }
+
+  walk(SECTIONS_DIR);
+
+  /** @type {Set<string>} */
+  const uids = new Set();
+  for (const file of files) {
+    const raw = readFileSync(file, 'utf8');
+    if (!raw.startsWith('---')) continue;
+    const end = raw.indexOf('\n---', 3);
+    if (end === -1) continue;
+    const frontmatter = raw.slice(3, end);
+    const match = /^uid:\s*([^\s#]+)\s*$/m.exec(frontmatter);
+    if (!match) continue;
+    const uid = match[1];
+    if (!UID_RE.test(uid)) {
+      throw new Error(`Invalid uid "${uid}" in ${file}`);
+    }
+    if (uids.has(uid)) {
+      throw new Error(`Duplicate uid "${uid}" found while scanning sections`);
+    }
+    uids.add(uid);
+  }
+  return uids;
+}
+
+/**
  * @param {string} code
+ * @param {Set<string>} knownUids
  * @returns {string[]}
  */
-function parseCode(code) {
+function parseCode(code, knownUids) {
   const trimmed = code.trim();
   const prefix = `${CODE_PREFIX}:`;
   if (!trimmed.startsWith(prefix)) {
     throw new Error(
-      `Invalid code: expected it to start with "${prefix}" (got "${trimmed.slice(0, 24)}…")`,
+      `Invalid code: expected it to start with "${prefix}" (got "${trimmed.slice(0, 24)}")`,
     );
   }
   const body = trimmed.slice(prefix.length).trim();
   if (!body) {
-    throw new Error('Invalid code: no section ids after the prefix');
+    throw new Error('Invalid code: no section uids after the prefix');
   }
   const ids = [
     ...new Set(
@@ -77,6 +124,16 @@ function parseCode(code) {
   ].sort();
   if (ids.length === 0) {
     throw new Error('Invalid code: empty section list');
+  }
+  for (const id of ids) {
+    if (!UID_RE.test(id)) {
+      throw new Error(`Invalid section uid in code: "${id}"`);
+    }
+    if (!knownUids.has(id)) {
+      throw new Error(
+        `Unknown section uid "${id}". Known uids: ${[...knownUids].sort().join(', ') || '(none)'}`,
+      );
+    }
   }
   return ids;
 }
@@ -127,7 +184,8 @@ function main() {
     usage();
   }
 
-  const sections = parseCode(args.code);
+  const knownUids = loadKnownUids();
+  const sections = parseCode(args.code, knownUids);
   const existingIdx = signers.findIndex(
     (s) => s.name.toLowerCase() === name.toLowerCase(),
   );

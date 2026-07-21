@@ -4,7 +4,7 @@ Static [Astro](https://astro.build) site that renders an open letter ("Carta abi
 
 Editorial backlog for points not yet written into the letter lives in `tasks/` (created by `/extraer-puntos-carta`). Those files are work items only — Astro does not load them.
 
-Section frontmatter may include `signable: true` so readers can mark that section while reading; selections are completed in the «Completar la firma» panel (client-side only; no backend). The panel only appears after at least one section is marked. The copyable code is `CAB1:<section-id>,…` (section ids only). Editors add signers with `pnpm sign --name "…" --code "CAB1:…"` (writes `src/data/signatures.json`); remove with `pnpm sign --remove --name "…"`.
+Section frontmatter may include `signable: true` so readers can mark that section while reading; selections are completed in the «Completar la firma» panel (client-side only; no backend). The panel only appears after at least one section is marked. Signable sections require a stable `uid` (lowercase kebab-case) that must not encode document order or file-path prefixes — reordering folders/files must not break existing signature codes. The copyable code is `CAB1:<uid>,…`. Editors add signers with `pnpm sign --name "…" --code "CAB1:…"` (writes `src/data/signatures.json`); remove with `pnpm sign --remove --name "…"`.
 
 ## Editorial Agent Skills
 

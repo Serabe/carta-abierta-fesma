@@ -22,8 +22,9 @@
       <span class="sign-label">Código para enviar</span>
       <p class="sign-code" id="sign-code" aria-live="polite">—</p>
       <p class="sign-code-hint">
-        Formato <code>CAB1:</code> seguido de los ids de sección,
-        separados por comas. Quien gestione las firmas lo usa así:
+        Formato <code>CAB1:</code> seguido de los <code>uid</code> estables
+        de cada sección (no dependen del orden del documento), separados por
+        comas. Quien gestione las firmas lo usa así:
         <code>pnpm sign --name "Tu nombre" --code "CAB1:…"</code>
       </p>
     </div>

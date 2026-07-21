@@ -1,5 +1,6 @@
 ---
 title: Transparencia
+uid: transparencia
 signable: true
 ---
 
