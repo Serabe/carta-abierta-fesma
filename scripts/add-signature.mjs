@@ -8,7 +8,7 @@
  *   node scripts/add-signature.mjs --remove --name "Ana Pérez"
  *
  * Code format: CAB1:<uid>,<uid>,...
- * Uids are 4-digit strings for integers 0–1000 (e.g. 0000, 0012, 1000),
+ * Uids are 4-digit strings for integers 0–9999 (e.g. 0000, 0012, 9999),
  * from each section's frontmatter `uid` field — not folder/file order.
  */
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -25,9 +25,7 @@ const UID_RE = /^\d{4}$/;
  * @param {string} uid
  */
 function isValidUid(uid) {
-  if (!UID_RE.test(uid)) return false;
-  const n = Number(uid);
-  return n >= 0 && n <= 1000;
+  return UID_RE.test(uid);
 }
 
 /**
@@ -96,7 +94,7 @@ function loadKnownUids() {
     if (!match) continue;
     const uid = match[1];
     if (!isValidUid(uid)) {
-      throw new Error(`Invalid uid "${uid}" in ${file} (expected 0000–1000)`);
+      throw new Error(`Invalid uid "${uid}" in ${file} (expected 0000–9999)`);
     }
     if (uids.has(uid)) {
       throw new Error(`Duplicate uid "${uid}" found while scanning sections`);
@@ -136,7 +134,7 @@ function parseCode(code, knownUids) {
   }
   for (const id of ids) {
     if (!isValidUid(id)) {
-      throw new Error(`Invalid section uid in code: "${id}" (expected 0000–1000)`);
+      throw new Error(`Invalid section uid in code: "${id}" (expected 0000–9999)`);
     }
     if (!knownUids.has(id)) {
       throw new Error(
