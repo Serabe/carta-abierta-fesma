@@ -1,13 +1,18 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-/** Stable section id: lowercase kebab-case, independent of folder/file order. */
+/**
+ * Stable section id: a random integer 0–1000, always written as 4 digits
+ * (e.g. 0 → "0000", 12 → "0012", 1000 → "1000"). Independent of folder/file order.
+ * Quote in frontmatter so YAML keeps leading zeros: uid: "0639"
+ */
 const sectionUid = z
   .string()
-  .regex(
-    /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/,
-    'uid must be lowercase kebab-case (e.g. transparencia)',
-  );
+  .regex(/^\d{4}$/, 'uid must be exactly 4 digits (e.g. "0000", "0639")')
+  .refine((value) => {
+    const n = Number(value);
+    return n >= 0 && n <= 1000;
+  }, 'uid must be between 0000 and 1000');
 
 const sections = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/sections' }),

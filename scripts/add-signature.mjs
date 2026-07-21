@@ -3,13 +3,13 @@
  * Add a signer from a CAB1 section code (copied from the letter UI).
  *
  * Usage:
- *   node scripts/add-signature.mjs --name "Ana Pérez" --code "CAB1:transparencia,participacion"
- *   node scripts/add-signature.mjs --name "Ana Pérez" --affiliation "Madrid" --code "CAB1:transparencia"
+ *   node scripts/add-signature.mjs --name "Ana Pérez" --code "CAB1:0012,0639"
+ *   node scripts/add-signature.mjs --name "Ana Pérez" --affiliation "Madrid" --code "CAB1:0639"
  *   node scripts/add-signature.mjs --remove --name "Ana Pérez"
  *
  * Code format: CAB1:<uid>,<uid>,...
- * Uids come from each section's frontmatter `uid` field (stable; not the
- * folder/file order prefixes like 03-peticiones/01-…).
+ * Uids are 4-digit strings for integers 0–1000 (e.g. 0000, 0012, 1000),
+ * from each section's frontmatter `uid` field — not folder/file order.
  */
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -19,7 +19,16 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_PATH = join(ROOT, 'src/data/signatures.json');
 const SECTIONS_DIR = join(ROOT, 'src/content/sections');
 const CODE_PREFIX = 'CAB1';
-const UID_RE = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
+const UID_RE = /^\d{4}$/;
+
+/**
+ * @param {string} uid
+ */
+function isValidUid(uid) {
+  if (!UID_RE.test(uid)) return false;
+  const n = Number(uid);
+  return n >= 0 && n <= 1000;
+}
 
 /**
  * @typedef {{ name: string, affiliation?: string, sections: string[], addedAt: string }} Signer
@@ -27,8 +36,8 @@ const UID_RE = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 
 function usage() {
   console.error(`Usage:
-  node scripts/add-signature.mjs --name "Nombre" --code "CAB1:uid,uid,..."
-  node scripts/add-signature.mjs --name "Nombre" --affiliation "Delegación" --code "CAB1:..."
+  node scripts/add-signature.mjs --name "Nombre" --code "CAB1:0639,0012"
+  node scripts/add-signature.mjs --name "Nombre" --affiliation "Delegación" --code "CAB1:0639"
   node scripts/add-signature.mjs --remove --name "Nombre"`);
   process.exit(1);
 }
@@ -83,11 +92,11 @@ function loadKnownUids() {
     const end = raw.indexOf('\n---', 3);
     if (end === -1) continue;
     const frontmatter = raw.slice(3, end);
-    const match = /^uid:\s*([^\s#]+)\s*$/m.exec(frontmatter);
+    const match = /^uid:\s*["']?(\d{4})["']?\s*$/m.exec(frontmatter);
     if (!match) continue;
     const uid = match[1];
-    if (!UID_RE.test(uid)) {
-      throw new Error(`Invalid uid "${uid}" in ${file}`);
+    if (!isValidUid(uid)) {
+      throw new Error(`Invalid uid "${uid}" in ${file} (expected 0000–1000)`);
     }
     if (uids.has(uid)) {
       throw new Error(`Duplicate uid "${uid}" found while scanning sections`);
@@ -126,8 +135,8 @@ function parseCode(code, knownUids) {
     throw new Error('Invalid code: empty section list');
   }
   for (const id of ids) {
-    if (!UID_RE.test(id)) {
-      throw new Error(`Invalid section uid in code: "${id}"`);
+    if (!isValidUid(id)) {
+      throw new Error(`Invalid section uid in code: "${id}" (expected 0000–1000)`);
     }
     if (!knownUids.has(id)) {
       throw new Error(

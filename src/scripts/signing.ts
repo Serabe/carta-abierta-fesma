@@ -29,7 +29,7 @@ function titleFor(id: string): string {
   return el?.getAttribute('data-sign-title') ?? id;
 }
 
-/** Compact, script-parseable list of stable section uids. Example: CAB1:transparencia,participacion */
+/** Compact, script-parseable list of stable section uids. Example: CAB1:0012,0639 */
 function buildSectionCode(selected: string[]): string {
   const ids = [...new Set(selected)].sort().join(',');
   return `${CODE_PREFIX}:${ids}`;

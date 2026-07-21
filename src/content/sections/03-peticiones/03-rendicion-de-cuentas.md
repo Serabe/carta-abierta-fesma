@@ -1,6 +1,6 @@
 ---
 title: Rendición de cuentas
-uid: rendicion-de-cuentas
+uid: "0076"
 signable: true
 ---
 
