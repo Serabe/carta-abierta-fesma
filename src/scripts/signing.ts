@@ -1,4 +1,6 @@
 const STORAGE_KEY = 'carta-abierta:pending-signatures';
+/** Prefix for the copyable section-id payload. Parsed by scripts/add-signature.mjs */
+const CODE_PREFIX = 'CAB1';
 
 type SignState = {
   selected: string[];
@@ -27,37 +29,10 @@ function titleFor(id: string): string {
   return el?.getAttribute('data-sign-title') ?? id;
 }
 
-function shortCode(selected: string[], name: string): string {
-  const payload = `${name.trim().toLowerCase()}|${[...selected].sort().join(',')}`;
-  let hash = 0;
-  for (let i = 0; i < payload.length; i++) {
-    hash = (hash * 31 + payload.charCodeAt(i)) >>> 0;
-  }
-  return `CAB-${hash.toString(16).toUpperCase().padStart(6, '0').slice(0, 6)}`;
-}
-
-function buildMessage(selected: string[], name: string, affiliation: string): string {
-  const lines = [
-    'Solicitud de firma — Carta abierta a FESMA',
-    '',
-    `Nombre (tal como debe aparecer): ${name.trim() || '—'}`,
-  ];
-  if (affiliation.trim()) {
-    lines.push(`Afiliación / delegación: ${affiliation.trim()}`);
-  }
-  lines.push('', 'Secciones que deseo firmar:');
-  for (const id of selected) {
-    lines.push(`- ${titleFor(id)} (${id})`);
-  }
-  lines.push('', `Código de solicitud: ${shortCode(selected, name)}`);
-  lines.push(
-    '',
-    'He leído el aviso: mi nombre figurará en el repositorio público del',
-    'proyecto. Si más adelante retiro la firma, el nombre dejará de',
-    'aparecer en la versión publicada, pero permanecerá en el historial',
-    'de cambios de git.',
-  );
-  return lines.join('\n');
+/** Compact, script-parseable list of section ids. Example: CAB1:id-a,id-b */
+function buildSectionCode(selected: string[]): string {
+  const ids = [...new Set(selected)].sort().join(',');
+  return `${CODE_PREFIX}:${ids}`;
 }
 
 function showToast(message: string) {
@@ -94,54 +69,39 @@ function syncUi(state: SignState) {
     }
   });
 
+  const hasSelection = state.selected.length > 0;
+
+  const panel = document.getElementById('firmar');
+  if (panel) {
+    panel.hidden = !hasSelection;
+  }
+
   const bar = document.getElementById('sign-sticky-bar');
   const countEl = document.getElementById('sign-sticky-count');
   if (bar && countEl) {
-    const n = state.selected.length;
-    if (n === 0) {
+    if (!hasSelection) {
       bar.hidden = true;
     } else {
       bar.hidden = false;
+      const n = state.selected.length;
       countEl.textContent =
         n === 1 ? '1 sección seleccionada' : `${n} secciones seleccionadas`;
     }
   }
 
-  const empty = document.getElementById('sign-finalize-empty');
-  const form = document.getElementById('sign-finalize-form');
   const list = document.getElementById('sign-selected-list');
-  if (empty && form && list) {
-    if (state.selected.length === 0) {
-      empty.hidden = false;
-      form.hidden = true;
-    } else {
-      empty.hidden = true;
-      form.hidden = false;
-      list.innerHTML = '';
-      for (const id of state.selected) {
-        const li = document.createElement('li');
-        li.textContent = titleFor(id);
-        list.appendChild(li);
-      }
+  if (list) {
+    list.innerHTML = '';
+    for (const id of state.selected) {
+      const li = document.createElement('li');
+      li.textContent = titleFor(id);
+      list.appendChild(li);
     }
   }
 
-  refreshMessage();
-}
-
-function refreshMessage() {
-  const state = readState();
-  const nameInput = document.getElementById('sign-name') as HTMLInputElement | null;
-  const affInput = document.getElementById('sign-affiliation') as HTMLInputElement | null;
-  const out = document.getElementById('sign-message') as HTMLTextAreaElement | null;
   const codeEl = document.getElementById('sign-code');
-  if (!out) return;
-  const name = nameInput?.value ?? '';
-  const affiliation = affInput?.value ?? '';
-  out.value = buildMessage(state.selected, name, affiliation);
   if (codeEl) {
-    codeEl.textContent =
-      state.selected.length > 0 ? shortCode(state.selected, name) : '—';
+    codeEl.textContent = hasSelection ? buildSectionCode(state.selected) : '—';
   }
 }
 
@@ -159,7 +119,7 @@ function toggle(id: string) {
 
   if (wasOff) {
     showToast(
-      'Al final del documento encontrarás las instrucciones para completar la firma de todas las secciones que hayas marcado.',
+      'Al final del documento aparecerán las instrucciones para completar la firma de las secciones que hayas marcado.',
     );
   }
 }
@@ -172,22 +132,24 @@ function init() {
     });
   });
 
-  const nameInput = document.getElementById('sign-name');
-  const affInput = document.getElementById('sign-affiliation');
-  nameInput?.addEventListener('input', refreshMessage);
-  affInput?.addEventListener('input', refreshMessage);
-
   const copyBtn = document.getElementById('sign-copy');
   copyBtn?.addEventListener('click', async () => {
-    const out = document.getElementById('sign-message') as HTMLTextAreaElement | null;
-    if (!out?.value) return;
+    const state = readState();
+    if (state.selected.length === 0) return;
+    const code = buildSectionCode(state.selected);
     try {
-      await navigator.clipboard.writeText(out.value);
-      showToast('Mensaje copiado. Envíalo a través de un contacto en común.');
+      await navigator.clipboard.writeText(code);
+      showToast('Código copiado. Envíalo junto con tu nombre a través de un contacto en común.');
     } catch {
-      out.focus();
-      out.select();
-      showToast('No se pudo copiar automáticamente. Selecciona el texto y cópialo a mano.');
+      const codeEl = document.getElementById('sign-code');
+      if (codeEl) {
+        const range = document.createRange();
+        range.selectNodeContents(codeEl);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+      }
+      showToast('No se pudo copiar automáticamente. Selecciona el código y cópialo a mano.');
     }
   });
 

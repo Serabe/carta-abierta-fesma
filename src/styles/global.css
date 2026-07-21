@@ -314,8 +314,11 @@ a {
   scroll-margin-top: 5rem;
 }
 
-.sign-finalize-lead,
-.sign-finalize-empty {
+.sign-finalize[hidden] {
+  display: none;
+}
+
+.sign-finalize-lead {
   color: var(--color-muted);
 }
 
@@ -367,9 +370,21 @@ a {
 .sign-code {
   margin: 0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 1.05rem;
-  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
   color: var(--color-accent);
+  word-break: break-all;
+  padding: 0.75rem 0.85rem;
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-border);
+  user-select: all;
+}
+
+.sign-code-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  line-height: 1.45;
 }
 
 .sign-linkish {

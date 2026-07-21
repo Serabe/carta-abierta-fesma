@@ -1,22 +1,15 @@
 ---
 ---
 
-<section class="sign-finalize" id="firmar" data-section="firmar">
+<section class="sign-finalize" id="firmar" data-section="firmar" hidden>
   <h2>Completar la firma</h2>
   <p class="sign-finalize-lead">
-    Si has marcado secciones con «Quiero firmar esto», rellena tus datos
-    y envía el mensaje generado a través de un contacto en común. Así
-    podremos verificar la solicitud y añadir tu nombre al listado público
-    de firmantes en el repositorio.
+    Copia este código y envíalo, junto con el nombre con el que quieres
+    aparecer, a través de un contacto en común. El código solo lista las
+    secciones que has marcado; con él se actualizará el repositorio.
   </p>
 
-  <p id="sign-finalize-empty" class="sign-finalize-empty">
-    Todavía no has marcado ninguna sección. Mientras lees la carta,
-    usa el botón «Quiero firmar esto» al final de cada apartado que
-    quieras apoyar.
-  </p>
-
-  <div id="sign-finalize-form" class="sign-finalize-form" hidden>
+  <div class="sign-finalize-form">
     <div class="sign-field">
       <span class="sign-label">Secciones seleccionadas</span>
       <ul id="sign-selected-list" class="sign-selected-list"></ul>
@@ -25,41 +18,18 @@
       </button>
     </div>
 
-    <label class="sign-field" for="sign-name">
-      <span class="sign-label">Nombre (tal como debe aparecer)</span>
-      <input
-        type="text"
-        id="sign-name"
-        name="name"
-        autocomplete="name"
-        placeholder="Nombre y apellidos, o seudónimo público"
-        required
-      />
-    </label>
-
-    <label class="sign-field" for="sign-affiliation">
-      <span class="sign-label">Afiliación o delegación (opcional)</span>
-      <input
-        type="text"
-        id="sign-affiliation"
-        name="affiliation"
-        autocomplete="organization"
-        placeholder="p. ej. Delegación de Madrid"
-      />
-    </label>
-
     <div class="sign-field">
-      <span class="sign-label">Código de solicitud</span>
+      <span class="sign-label">Código para enviar</span>
       <p class="sign-code" id="sign-code" aria-live="polite">—</p>
+      <p class="sign-code-hint">
+        Formato <code>CAB1:</code> seguido de los ids de sección,
+        separados por comas. Quien gestione las firmas lo usa así:
+        <code>pnpm sign --name "Tu nombre" --code "CAB1:…"</code>
+      </p>
     </div>
 
-    <label class="sign-field" for="sign-message">
-      <span class="sign-label">Mensaje para enviar</span>
-      <textarea id="sign-message" rows="14" readonly></textarea>
-    </label>
-
     <button type="button" class="sign-copy" id="sign-copy">
-      Copiar mensaje
+      Copiar código
     </button>
 
     <aside class="sign-privacy" aria-label="Aviso sobre privacidad y repositorio">
@@ -69,11 +39,6 @@
         dejar de firmar, lo retiraremos de la versión publicada y dejará
         de mostrarse en el listado, pero el nombre permanecerá en el
         historial de cambios de git.
-      </p>
-      <p>
-        Envía el mensaje copiado a quien gestione las firmas a través de
-        un contacto en común. No hace falta crear una cuenta: basta con
-        ese canal de confianza.
       </p>
     </aside>
   </div>
