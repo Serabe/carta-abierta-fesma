@@ -4,6 +4,8 @@ Static [Astro](https://astro.build) site that renders an open letter ("Carta abi
 
 Editorial backlog for points not yet written into the letter lives in `tasks/` (created by `/extraer-puntos-carta`). Those files are work items only — Astro does not load them.
 
+Section frontmatter may include `signable: true` so readers can mark that section while reading; selections are completed in the «Completar la firma» panel (client-side only; no backend).
+
 ## Editorial Agent Skills
 
 Project skills live under `.cursor/skills/` (each folder has a `SKILL.md`). All three are **user-invoked only** (`disable-model-invocation: true`): they do not auto-apply; invoke them with `/` or `@` in Agent chat.

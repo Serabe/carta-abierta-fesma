@@ -6,6 +6,8 @@ const sections = defineCollection({
   schema: z.object({
     title: z.string(),
     aside: z.string().optional(),
+    /** If true, readers can mark this section to sign at the end of the letter. */
+    signable: z.boolean().default(false),
   }),
 });
 

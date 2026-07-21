@@ -1,8 +1,9 @@
 ---
 title: Cierre
 aside: |
-  ¿Quieres apoyar esta carta? Escríbenos y añadiremos tu nombre o
-  el de tu delegación al listado público de firmantes.
+  ¿Quieres apoyar esta carta? Marca «Quiero firmar esto» en las
+  secciones que compartas y, al final, sigue las instrucciones de
+  **Completar la firma**.
 ---
 
 Cerramos esta carta con la esperanza de que sea recibida en el mismo

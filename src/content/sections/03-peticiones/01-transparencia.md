@@ -1,5 +1,6 @@
 ---
 title: Transparencia
+signable: true
 ---
 
 Solicitamos la publicación regular y accesible de las actas de junta

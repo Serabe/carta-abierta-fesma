@@ -8,6 +8,8 @@ import SidebarAsides, {
   type SidebarAside,
 } from '../components/SidebarAsides.astro';
 import VersionHistory from '../components/VersionHistory.astro';
+import SignToggle from '../components/SignToggle.astro';
+import SignFinalize from '../components/SignFinalize.astro';
 
 const entries = await getCollection('sections');
 
@@ -128,6 +130,12 @@ const renderedGroups = await Promise.all(
           >
             <h2>{group.intro.data.title}</h2>
             <IntroContent />
+            {group.intro.data.signable && (
+              <SignToggle
+                id={group.sectionSlug}
+                title={group.intro.data.title}
+              />
+            )}
             {subs.map(({ entry, anchor, Content }) => (
               <section
                 id={anchor}
@@ -136,18 +144,23 @@ const renderedGroups = await Promise.all(
               >
                 <h3>{entry.data.title}</h3>
                 <Content />
+                {entry.data.signable && (
+                  <SignToggle id={anchor} title={entry.data.title} />
+                )}
               </section>
             ))}
           </section>
         ))
       }
 
+      <SignFinalize />
       <VersionHistory />
     </main>
   </div>
 
   <script>
     import '../scripts/scrollspy.ts';
+    import '../scripts/signing.ts';
 
     const toggle = document.getElementById('sidebar-toggle');
     const sidebar = document.getElementById('sidebar');
