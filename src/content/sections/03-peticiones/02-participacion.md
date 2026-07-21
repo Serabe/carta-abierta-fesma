@@ -1,5 +1,7 @@
 ---
 title: Participación
+uid: "0012"
+signable: true
 ---
 
 Pedimos que las asambleas se convoquen con un plazo mínimo real que

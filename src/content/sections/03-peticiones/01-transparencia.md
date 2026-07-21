@@ -1,5 +1,7 @@
 ---
 title: Transparencia
+uid: "0639"
+signable: true
 ---
 
 Solicitamos la publicación regular y accesible de las actas de junta

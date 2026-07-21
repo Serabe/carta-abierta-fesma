@@ -278,6 +278,226 @@ a {
   margin: 0 0 1rem;
 }
 
+.sign-toggle-wrap {
+  margin: 1.25rem 0 0;
+}
+
+.sign-toggle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.sign-toggle:hover {
+  background: var(--color-accent-soft);
+}
+
+.sign-toggle.is-selected,
+.sign-toggle[aria-pressed='true'] {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.sign-finalize {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+  scroll-margin-top: 5rem;
+}
+
+.sign-finalize[hidden] {
+  display: none;
+}
+
+.sign-finalize-lead {
+  color: var(--color-muted);
+}
+
+.sign-finalize-form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+
+.sign-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sign-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.sign-field input,
+.sign-field textarea {
+  font: inherit;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.sign-field textarea {
+  resize: vertical;
+  min-height: 12rem;
+  line-height: 1.5;
+  font-size: 0.88rem;
+}
+
+.sign-selected-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--color-text);
+}
+
+.sign-code {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
+  word-break: break-all;
+  padding: 0.75rem 0.85rem;
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-border);
+  user-select: all;
+}
+
+.sign-code-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+.sign-linkish {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sign-linkish:hover {
+  color: var(--color-accent);
+}
+
+.sign-copy {
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.sign-copy:hover {
+  filter: brightness(0.95);
+}
+
+.sign-privacy {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.sign-privacy p {
+  margin: 0 0 0.75rem;
+}
+
+.sign-privacy p:last-child {
+  margin-bottom: 0;
+}
+
+.sign-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 5.5rem;
+  z-index: 90;
+  width: min(28rem, calc(100vw - 2rem));
+  transform: translateX(-50%) translateY(0.75rem);
+  opacity: 0;
+  padding: 0.9rem 1.1rem;
+  background: var(--color-text);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+  pointer-events: none;
+}
+
+.sign-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.sign-sticky-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  z-index: 80;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0.85rem 0.7rem 1.1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+.sign-sticky-cta {
+  display: inline-block;
+  padding: 0.45rem 0.85rem;
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.sign-sticky-cta:hover {
+  filter: brightness(0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sign-toast,
+  .sign-toggle {
+    transition: none;
+  }
+}
+
 .versions {
   margin-top: 5rem;
   padding-top: 2rem;

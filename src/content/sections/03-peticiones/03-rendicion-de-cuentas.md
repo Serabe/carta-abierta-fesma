@@ -1,5 +1,7 @@
 ---
 title: Rendición de cuentas
+uid: "0076"
+signable: true
 ---
 
 Reclamamos un mecanismo periódico y estable de rendición de cuentas por

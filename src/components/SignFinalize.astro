@@ -1,0 +1,51 @@
+---
+---
+
+<section class="sign-finalize" id="firmar" data-section="firmar" hidden>
+  <h2>Completar la firma</h2>
+  <p class="sign-finalize-lead">
+    Copia este código y envíalo, junto con el nombre con el que quieres
+    aparecer, a través de un contacto en común. El código solo lista las
+    secciones que has marcado; con él se actualizará el repositorio.
+  </p>
+
+  <div class="sign-finalize-form">
+    <div class="sign-field">
+      <span class="sign-label">Secciones seleccionadas</span>
+      <ul id="sign-selected-list" class="sign-selected-list"></ul>
+      <button type="button" class="sign-linkish" id="sign-clear">
+        Quitar todas las selecciones
+      </button>
+    </div>
+
+    <div class="sign-field">
+      <span class="sign-label">Código para enviar</span>
+      <p class="sign-code" id="sign-code" aria-live="polite">—</p>
+      <p class="sign-code-hint">
+        Formato <code>CAB1:</code> seguido de los <code>uid</code> numéricos
+        de cada sección (4 dígitos, independientes del orden del documento),
+        separados por comas. Quien gestione las firmas lo usa así:
+        <code>pnpm sign --name "Tu nombre" --code "CAB1:…"</code>
+      </p>
+    </div>
+
+    <button type="button" class="sign-copy" id="sign-copy">
+      Copiar código
+    </button>
+
+    <aside class="sign-privacy" aria-label="Aviso sobre privacidad y repositorio">
+      <p>
+        <strong>Importante.</strong> Tu nombre figurará en un repositorio
+        público (histórico de versiones incluido). Si más adelante quieres
+        dejar de firmar, lo retiraremos de la versión publicada y dejará
+        de mostrarse en el listado, pero el nombre permanecerá en el
+        historial de cambios de git.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<div class="sign-sticky-bar" id="sign-sticky-bar" hidden>
+  <span id="sign-sticky-count">0 secciones seleccionadas</span>
+  <a class="sign-sticky-cta" href="#firmar">Terminar de firmar</a>
+</div>
