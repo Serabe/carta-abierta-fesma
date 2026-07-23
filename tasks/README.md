@@ -8,3 +8,7 @@ Work items for developing the open letter. **Not site content.**
 
 Created by `/extraer-puntos-carta`. Worked later with `/espiritu-y-letra` and
 `/suavizar-tono-resentimiento` before promoting wording into sections.
+
+- `tasks/P*.md` — puntos del backlog (una tarea = un punto).
+- `tasks/borradores/` — primeros borradores de redacción por punto (trabajo individual).
+- `tasks/PROPUESTAS-AGRUPACION.md` — formas alternativas de agrupar puntos en secciones.
