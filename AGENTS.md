@@ -26,6 +26,7 @@ estatutos/reglamento content is needed.
 | --- | --- | --- |
 | `/extraer-puntos-carta` | `extraer-puntos-carta` | Extract developable points from raw notes into `tasks/P*.md` |
 | `/siguiente-tarea` | `siguiente-tarea` | Pick one open `tasks/P*.md` item to work on individually |
+| `/grillar-punto` | `grillar-punto` | Relentless one-question-at-a-time interview on a backlog point |
 | `/espiritu-y-letra` | `espiritu-y-letra` | Split each point into espíritu (intent) vs letra (wording) |
 | `/suavizar-tono-resentimiento` | `suavizar-tono-resentimiento` | Soften resentment / personal-attack tone without diluting the ask |
 | `/consultar-reglamentos-fesma` | `consultar-reglamentos-fesma` | Read/cite texts in `reglamentos/` (estatutos, CMN, concursos, etc.) |
