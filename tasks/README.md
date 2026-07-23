@@ -6,5 +6,11 @@ Work items for developing the open letter. **Not site content.**
 - Files here are a backlog until someone turns a task into letter text under `src/content/`.
 - Do not import, link, or render anything from this directory in the web app.
 
-Created by `/extraer-puntos-carta`. Worked later with `/espiritu-y-letra` and
-`/suavizar-tono-resentimiento` before promoting wording into sections.
+Created by `/extraer-puntos-carta`. Pick one open item with `/siguiente-tarea`.
+Stress-test a point with `/grillar-punto`. Worked later with
+`/espiritu-y-letra` and `/suavizar-tono-resentimiento` before promoting
+wording into sections.
+
+- `tasks/P*.md` — puntos del backlog (una tarea = un punto).
+- `tasks/borradores/` — primeros borradores de redacción por punto (trabajo individual).
+- `tasks/PROPUESTAS-AGRUPACION.md` — formas alternativas de agrupar puntos en secciones.
