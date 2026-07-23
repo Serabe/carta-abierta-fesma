@@ -7,8 +7,9 @@ Work items for developing the open letter. **Not site content.**
 - Do not import, link, or render anything from this directory in the web app.
 
 Created by `/extraer-puntos-carta`. Pick one open item with `/siguiente-tarea`.
-Worked later with `/espiritu-y-letra` and `/suavizar-tono-resentimiento`
-before promoting wording into sections.
+Stress-test a point with `/grillar-punto`. Worked later with
+`/espiritu-y-letra` and `/suavizar-tono-resentimiento` before promoting
+wording into sections.
 
 - `tasks/P*.md` — puntos del backlog (una tarea = un punto).
 - `tasks/borradores/` — primeros borradores de redacción por punto (trabajo individual).
