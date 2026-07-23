@@ -10,30 +10,16 @@ disable-model-invocation: true
 
 # Grillar un punto
 
-Inspirada en
-[grilling](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md)
-(Matt Pocock), adaptada al backlog editorial de la carta abierta.
-
 ## Objetivo
 
 Entrevistar al usuario **sin tregua** sobre **un solo** punto hasta
-llegar a un entendimiento compartido. Bajar cada rama del árbol de
+llegar a un entendimiento compartido. El punto lo elige el usuario o
+se elige antes con `/siguiente-tarea`. Bajar cada rama del árbol de
 decisiones, resolviendo dependencias una a una. En cada pregunta,
 ofrecer **tu respuesta recomendada**.
 
-## Cuándo usar
-
-Solo cuando el usuario lo invoca con `/grillar-punto` (o `@`). No
-aplicar de forma automática.
-
-## Cómo elegir el punto
-
-1. Si indica id o título (`P004`, «el de avales»…), ese.
-2. Si no, misma selección que `/siguiente-tarea` (una `open`:
-   priority → madurez → id).
-3. Leer `tasks/P*.md` y, si existe, `tasks/borradores/{stem}.md`.
-4. Hechos normativos: mirar `reglamentos/` (skill
-   `consultar-reglamentos-fesma`), no preguntar lo que está en disco.
+Comprobar coherencia con el resto de puntos ya desarrollados en
+`src/content/` y señalar cualquier contradicción.
 
 ## Instrucciones (grilling)
 
@@ -70,3 +56,4 @@ pasa a otra skill (`/espiritu-y-letra`, `/suavizar-tono-resentimiento`).
 - No grillar varios puntos en paralelo.
 - No crear puntos nuevos (`/extraer-puntos-carta`).
 - No promover a `src/content/` sin petición explícita tras el acuerdo.
+- No elegir el punto aquí: lo aporta el usuario o `/siguiente-tarea`.
