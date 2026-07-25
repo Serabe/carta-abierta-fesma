@@ -1,6 +1,6 @@
 # Propuestas de agrupación en secciones
 
-Tres formas distintas de ordenar P001–P013 cuando se pasen a `src/content/sections/`.
+Formas distintas de ordenar P001–P014 cuando se pasen a `src/content/sections/`.
 Son alternativas editoriales; no son contenido publicado.
 
 ---
@@ -13,9 +13,9 @@ Encaja con la estructura actual del sitio (contexto → situación → peticione
 | --- | --- |
 | **Contexto / antecedentes** | P009 (naturaleza federativa), P013 (cantera y calendario) |
 | **Situación: el Nacional** | P001, P002, P003, P005 |
-| **Situación: gobernanza y conflictos** | P004, P006, P012 |
-| **Situación: comunicación** | P010, P011 |
-| **Peticiones** | P007, P008, P009 (herramientas), P011 (protocolo), P012 (salvaguardas), P013 |
+| **Situación: gobernanza y conflictos** | P004, P006, P012, P014 |
+| **Situación: comunicación** | P010, P011, P014 (tono y asunción de responsabilidad) |
+| **Peticiones** | P007, P008, P009 (herramientas), P011 (protocolo), P012 (salvaguardas), P013, P014 (práctica de asunción) |
 | **Cierre** | Llamado al diálogo + prioridad de 3–4 peticiones |
 
 **Ventaja:** coherente con la carta ya publicada.  
@@ -29,7 +29,7 @@ Tres bloques narrativos fuertes, útiles si se quiere una carta más corta y afi
 
 1. **Lo que falló en el CMN** — P001, P002, P003, P005  
 2. **Reglas, sanciones y poderes** — P004, P006, P007, P008, P012, P013  
-3. **Federación de asociaciones y comunicación** — P009, P010, P011  
+3. **Federación de asociaciones y comunicación** — P009, P010, P011, P014  
 
 **Ventaja:** el lector sigue una historia (hechos → reglas → para quién existe la FESMA).  
 **Riesgo:** el bloque 2 es denso; puede pedir subapartados.
@@ -42,7 +42,7 @@ Ordena según qué se pide ahora vs. qué se reforma a medio plazo.
 
 | Sección | Puntos | Enfoque |
 | --- | --- | --- |
-| **Hechos que exigen reconocimiento** | P001, P003, P005, P010 | Admisión pública + claridad |
+| **Hechos que exigen reconocimiento** | P001, P003, P005, P010, P014 | Admisión pública + asunción de responsabilidad |
 | **Garantías inmediatas antes del próximo CMN** | P002, P004, P006, P012 | Supervisión, incompatibilidades, no retroactividad, criterios de sanción |
 | **Reformas de concurso** | P007, P008, P013 | Puntos, filtrado de avales, periodicidad |
 | **Servicios a las asociadas** | P009, P011 | Plataforma, canales, disenso |
@@ -60,4 +60,4 @@ Si hay que recortar a lo esencial:
 2. Escenario, equidad y conflictos de interés (P003+P004+P005)  
 3. Sanciones coherentes y filtrado de avales (P006+P007+P008+P013)  
 4. Separación de funciones y no retroactividad (P012)  
-5. Federación, herramientas y comunicación (P009+P010+P011)  
+5. Federación, herramientas, comunicación y responsabilidad (P009+P010+P011+P014)  
