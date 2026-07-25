@@ -1,17 +1,25 @@
-# Borrador — P001: Pseudociencias en el CMN y mandato estatutario
+# Borrador: P001 Pseudociencias en el CMN y mandato estatutario
 
-> Estado: primer borrador. Trabajo individual. No es contenido publicado.
+> Estado: cuarto borrador (paranormal / material del conferenciante). Trabajo individual. No es contenido publicado.
 
 ## Borrador
 
-Los estatutos de la FESMA establecen el propósito de diferenciar y defender la magia frente a las pseudociencias. Ese mandato no es ornamental: orienta qué cabe en un escenario federativo y qué no.
+Los estatutos de la FESMA establecen, entre sus fines, contribuir al prestigio del arte mágico «asegurando que no se pueda confundir la magia con las prácticas ocultas o paranormales» (art. 3.e). Ese mandato orienta qué cabe anunciar y programar bajo el paraguas federativo.
 
-En el Congreso Mágico Nacional de este año se presentó un número que, bajo apariencia de técnica mágica, sugiere la capacidad de «leer» o diagnosticar a través de una glándula —el timo—, idea que no sostiene la anatomía del adulto. El problema no es el uso de un efecto; es presentarlo de un modo que confunde magia con discurso pseudocientífico sobre el cuerpo.
+En el Congreso Mágico Nacional de este año se anunció una conferencia sobre la posibilidad de «leer» la glándula del timo. No se trataba de un número de mentalismo en el escenario del congreso. En vídeos de su canal de YouTube y de sus cuentas de Instagram, el conferenciante presenta habilidades atribuidas a esa lectura del timo; quienes conocen el mentalismo reconocen ahí técnicas habituales de ese ámbito. El problema no es el mentalismo en sí: es presentarlo como habilidad paranormal (o compatible con ella), de un modo que confunde magia con prácticas que el art. 3.e obliga a distinguir. Bastaba con ver el anuncio de la conferencia y ese material público del conferenciante para detectarlo; no hacía falta una investigación profunda.
 
-La reacción institucional fue rápida. La rapidez, por sí sola, no basta: hace falta un criterio público y previo sobre cómo se actúa cuando un número choca con ese mandato estatutario. Pedimos que se expliciten protocolo, responsables y plazos, y que el respeto a la magia como arte no se diluya en formatos que la asocian a promesas médicamente vacías.
+No hubo respuesta institucional a ese fondo. La actuación llegó después de una reacción pública amplia y, en palabras de la propia FESMA, se centró en declaraciones de «carácter presuntamente misógino», no en el choque del contenido anunciado con el mandato estatutario.
+
+Pedimos tres prácticas concretas:
+
+1. **Revisión previa del programa y del material público de quien se anuncia** (web, YouTube, Instagram u otros canales del propio ponente o artista), a la luz del art. 3.e, con responsables nominados y plazos públicos antes de cada CMN.
+2. **Respuesta explícita al fondo estatutario** cuando un contenido anunciado lo incumpla o lo ponga en riesgo: nombrar el conflicto con el art. 3.e y la decisión tomada (retirada, reformulación o mantenimiento motivado), sin sustituir ese debate por otras incidencias concurrentes.
+3. **Criterio publicado y reutilizable**: qué se admite, qué se rechaza y cómo se documenta la decisión ante las asociadas, de modo que el fin del art. 3.e no dependa de la presión pública posterior.
 
 ## Notas para la siguiente pasada
 
-- Citar artículo estatutario exacto.
-- Evitar nombrar personas si el foco es el criterio.
-- Decidir si este punto abre la carta o va bajo «situación del Nacional».
+- Norma citada: Estatutos art. 3.e (ocultas o paranormales).
+- Queja: habilidades paranormales / confusión magia–paranormal; no «discurso sobre el cuerpo».
+- Material: canal YouTube e IG del conferenciante, no promo del congreso.
+- «Carácter presuntamente misógino»: formulación atribuida a FESMA, no a la carta.
+- Encaje probable: situación del Nacional / mandato estatutario.

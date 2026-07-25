@@ -11,12 +11,12 @@ source: notas orales / borrador de carta abierta sobre FESMA y el Nacional
 
 ## Semilla
 
-En el Nacional se dio cabida a un número que presenta técnicas mágicas como capacidad de «leer» una glándula (timo), algo médicamente inconsistente en adultos; los estatutos de la FESMA prevén diferenciar y defender la magia frente a pseudociencias, y esa línea no se aplicó con claridad.
+En el Nacional se anunció una conferencia sobre «leer» la glándula del timo. No era un número de mentalismo en el congreso: en YouTube e Instagram del propio conferenciante aparecen habilidades atribuidas a esa lectura; quienes conocen el mentalismo reconocen técnicas habituales de ese ámbito. La queja es la confusión con habilidades paranormales (art. 3.e), no un «discurso sobre el cuerpo». No hubo respuesta a ese fondo: la actuación llegó tras la reacción pública y, en palabras de FESMA, se centró en declaraciones de «carácter presuntamente misógino».
 
 ## Por qué importa
 
-Afecta a la credibilidad pública de la magia organizada y al cumplimiento del mandato estatutario de proteger la disciplina frente a discursos pseudocientíficos.
+Afecta a la credibilidad pública de la magia organizada y al cumplimiento efectivo del art. 3.e: si el anuncio y el material público del ponente no activan revisión ni respuesta sobre ese punto, el fin estatutario queda vacío.
 
 ## Qué habría que desarrollar
 
-Citar el artículo estatutario concreto; describir el caso sin ataque personal; contrastar plazos de reacción (fin de semana → lunes) con el criterio institucional esperado; formular qué protocolo debería activarse ante números que confunden magia y salud.
+Citar art. 3.e; conferencia + material del conferenciante (YouTube/IG, no promo CMN); marco paranormal; atribuir «presuntamente misógino» a FESMA; peticiones: revisión previa (programa y canales del anunciado), respuesta explícita al art. 3.e, criterio publicado.
