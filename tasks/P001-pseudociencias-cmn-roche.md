@@ -11,12 +11,12 @@ source: notas orales / borrador de carta abierta sobre FESMA y el Nacional
 
 ## Semilla
 
-En el Nacional se dio cabida a un número que presenta técnicas mágicas como capacidad de «leer» una glándula (timo), algo médicamente inconsistente en adultos; los estatutos de la FESMA prevén diferenciar y defender la magia frente a pseudociencias, y esa línea no se aplicó con claridad.
+En el Nacional se anunció una conferencia que presentaba la «lectura» de la glándula del timo mediante técnicas de mentalismo conocidas; el problema es el marco (magia confundida con discurso sobre el cuerpo), no el mentalismo en sí. Los estatutos (art. 3.e) exigen no confundir magia con prácticas ocultas o paranormales. No hubo respuesta a ese fondo: la actuación llegó tras la reacción pública y se centró, según lo comunicado, en otras declaraciones del conferenciante, no en el anuncio ni en el mandato estatutario —detectable de antemano sin investigación profunda.
 
 ## Por qué importa
 
-Afecta a la credibilidad pública de la magia organizada y al cumplimiento del mandato estatutario de proteger la disciplina frente a discursos pseudocientíficos.
+Afecta a la credibilidad pública de la magia organizada y al cumplimiento efectivo del art. 3.e: si un anuncio evidente no activa revisión ni respuesta sobre ese punto, el fin estatutario queda vacío.
 
 ## Qué habría que desarrollar
 
-Citar el artículo estatutario concreto; describir el caso sin ataque personal; contrastar plazos de reacción (fin de semana → lunes) con el criterio institucional esperado; formular qué protocolo debería activarse ante números que confunden magia y salud.
+Mantener la cita al art. 3.e; describir conferencia anunciada (no número); no atribuir rapidez institucional; separar motivo alegado de la actuación (declaraciones) vs. silencio sobre el fondo (mentalismo + timo); pedir criterio previo de revisión del programa, responsables y plazos.

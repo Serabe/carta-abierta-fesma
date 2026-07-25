@@ -1,17 +1,18 @@
 # Borrador — P001: Pseudociencias en el CMN y mandato estatutario
 
-> Estado: primer borrador. Trabajo individual. No es contenido publicado.
+> Estado: segundo borrador (hechos corregidos tras revisión). Trabajo individual. No es contenido publicado.
 
 ## Borrador
 
-Los estatutos de la FESMA establecen el propósito de diferenciar y defender la magia frente a las pseudociencias. Ese mandato no es ornamental: orienta qué cabe en un escenario federativo y qué no.
+Los estatutos de la FESMA establecen, entre sus fines, contribuir al prestigio del arte mágico «asegurando que no se pueda confundir la magia con las prácticas ocultas o paranormales» (art. 3.e). Ese mandato orienta qué cabe anunciar y programar bajo el paraguas federativo.
 
-En el Congreso Mágico Nacional de este año se presentó un número que, bajo apariencia de técnica mágica, sugiere la capacidad de «leer» o diagnosticar a través de una glándula —el timo—, idea que no sostiene la anatomía del adulto. El problema no es el uso de un efecto; es presentarlo de un modo que confunde magia con discurso pseudocientífico sobre el cuerpo.
+En el Congreso Mágico Nacional de este año se anunció una conferencia que presentaba la posibilidad de «leer» la glándula del timo mediante técnicas de mentalismo —técnicas conocidas en ese ámbito—. El problema no es el mentalismo en sí; es enmarcarlo como lectura o diagnóstico del cuerpo, de un modo que confunde magia con un discurso incompatible con ese fin estatutario. Bastaba con leer el anuncio para detectarlo: no hacía falta una investigación profunda.
 
-La reacción institucional fue rápida. La rapidez, por sí sola, no basta: hace falta un criterio público y previo sobre cómo se actúa cuando un número choca con ese mandato estatutario. Pedimos que se expliciten protocolo, responsables y plazos, y que el respeto a la magia como arte no se diluya en formatos que la asocian a promesas médicamente vacías.
+No hubo respuesta institucional a ese fondo. La actuación llegó después de una reacción pública amplia y, según lo comunicado, se centró en otras declaraciones del conferenciante (de carácter misógino), no en el uso del mentalismo para sostener una afirmación sobre el cuerpo ni en el incumplimiento del art. 3.e. Pedimos un criterio público y previo: qué se revisa en el programa anunciado, quién responde y en qué plazo, de modo que el mandato estatutario no quede sin aplicar cuando el aviso es evidente de antemano.
 
 ## Notas para la siguiente pasada
 
-- Citar artículo estatutario exacto.
-- Evitar nombrar personas si el foco es el criterio.
-- Decidir si este punto abre la carta o va bajo «situación del Nacional».
+- Norma citada: Estatutos art. 3.e («ocultas o paranormales»); el puente a «pseudociencia / discurso sobre el cuerpo» queda explícito en el párrafo.
+- No se nombra al conferenciante; el foco es criterio y supervisión del programa.
+- Contrastar, si se documenta, el relato oficial sobre el motivo de la actuación (declaraciones vs. fondo del anuncio).
+- Encaje probable: situación del Nacional / mandato estatutario.
